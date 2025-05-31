@@ -45,7 +45,7 @@ class BSTNode {
 		this.up = up;
 	}
 	isRightChild(){
-		return this.getUp() != null && this.getUp().getRight() == this;
+		return this.getUp() !== null && this.getUp().getRight() === this;
 	}
 	toString(){
         return this.data.toString();
@@ -61,7 +61,7 @@ class BSTNode {
 			if ( peek().getLeft() !== null ) {
 				nodeList.push(peek().getLeft());
 			}
-			if ( peek().getRight() != null ) {
+			if ( peek().getRight() !== null ) {
 				nodeList.push(peek().getRight());
 			}
 			//either this is pop or shift (try it both ways I guess)
@@ -128,11 +128,11 @@ class BinarySearchTree {
 		}
 	}
 	recursiveInsert(data){
-		if ( data == null ) {
+		if ( data === null ) {
 			throw "Data can't be null.";
 		}
 		const newNode = new BSTNode(data);
-		if ( this.root == null ) {
+		if ( this.root === null ) {
 			this.root = newNode;
 		} else {
 			this.insertHelper(newNode, this.root);
@@ -142,7 +142,7 @@ class BinarySearchTree {
 		this.recursiveInsert(data);
 	}
 	getNode(data){
-		if ( data == null ) {
+		if ( data === null ) {
 			throw "Data can't be null.";
 		}
 		if ( this.isEmpty() ) {
@@ -158,7 +158,7 @@ class BinarySearchTree {
 					//data > nodeData (left subtree)
 					{
 						const left = currentNode.getLeft();
-						if ( left == null ) {
+						if ( left === null ) {
 							return null;
 						} else {
 							currentNode = left;
@@ -169,7 +169,7 @@ class BinarySearchTree {
 					//data < nodeData (right subtree)
 					{
 						const right = currentNode.getRight();
-						if ( right == null ) {
+						if ( right === null ) {
 							return null;
 						} else {
 							currentNode = right;
@@ -177,7 +177,7 @@ class BinarySearchTree {
 					}
 					break;
 				case 0:
-					//the value was found because data == nodeData
+					//the value was found because data === nodeData
 					return currentNode;
 			}
 		}
@@ -219,41 +219,41 @@ class BSTRotation extends BinarySearchTree {
 		super();
 	}
 	rotate(child, parent){
-    	if ( child == null || parent == null ) {
+    	if ( child === null || parent === null ) {
     		throw "Parent and child arguments can't be null.";
     	}
-    	if ( parent.getLeft() == child ) {
+    	if ( parent.getLeft() === child ) {
     		//right rotate
     		const b = child.getRight();
     		parent.setLeft(b);
     		child.setRight(parent);
-    		if ( this.root == parent ) {
+    		if ( this.root === parent ) {
     			//if the root is the parent, then change the root to the child
     			this.root = child;
     			child.setUp(null);
     		} else {
     			//get the parent of the parent in order to swap the two nodes
     			const parentParent = parent.getUp();
-    			if ( parentParent.getLeft() == parent ) {
+    			if ( parentParent.getLeft() === parent ) {
     				parentParent.setLeft(child);
     			} else {
     				parentParent.setRight(child);
     			}
 				child.setUp(parentParent);
     		}
-    	} else if ( parent.getRight() == child ) {
+    	} else if ( parent.getRight() === child ) {
     		//left rotate
     		const b = child.getLeft();
     		parent.setRight(b);
     		child.setLeft(parent);
-    		if ( this.root == parent ) {
+    		if ( this.root === parent ) {
     			//if the root is the parent, then change the root to the child
     			this.root = child;
     			child.setUp(null);
     		} else {
     			//get the parent of the parent in order to swap the two nodes
     			const parentParent = parent.getUp();
-				if ( parentParent.getLeft() == parent ) {
+				if ( parentParent.getLeft() === parent ) {
     				parentParent.setLeft(child);
     			} else {
     				parentParent.setRight(child);
@@ -272,69 +272,69 @@ class RedBlackTree extends BSTRotation {
 		this.root = null;
 	}
 	#getParent(node){
-		if ( node == null ) {
+		if ( node === null ) {
 			return null;
 		}
 		return node.getUp();
 	}
 	#getGrandparent(node){
-		if ( node == null ) {
+		if ( node === null ) {
 			return null;
 		}
 		const parent = this.#getParent(node);
-		if ( parent == null ) {
+		if ( parent === null ) {
 			return null;
 		}
 		const grandParent = parent.getUp();
-		if ( grandParent == null ) {
+		if ( grandParent === null ) {
 			return null;
 		}
 		return grandParent;
 	}
 	#getAunt(node) {
-		if ( node == null ) {
+		if ( node === null ) {
 			return null;
 		}
 		const parent = this.#getParent(node);
-		if ( parent == null ) {
+		if ( parent === null ) {
 			return null;
 		}
 		const grandParent = parent.getUp();
-		if ( grandParent == null ) {
+		if ( grandParent === null ) {
 			return null;
 		}
 		let aunt;
-		if ( grandParent.getLeft() == parent ) {
+		if ( grandParent.getLeft() === parent ) {
 			aunt = grandParent.getRight();
 		} else {
 			aunt = grandParent.getLeft();
 		}
-		if ( aunt == null ) {
+		if ( aunt === null ) {
 			return null;
 		}
 		return aunt;
 	}
 	#getParentIsRed(node) {
-		if ( node == null ) {
+		if ( node === null ) {
 			return false;
 		}
 		const aunt = this.#getParent(node);
-		return aunt == null ? false : aunt.isRed();
+		return aunt === null ? false : aunt.isRed();
 	}
 	#getAuntIsRed(node) {
-		if ( node == null ) {
+		if ( node === null ) {
 			return false;
 		}
 		const aunt = this.#getAunt(node);
-		return aunt == null ? false : aunt.isRed();
+		return aunt === null ? false : aunt.isRed();
 	}
 	#turnRed(node){
-		if ( node != null && node.isRed() == false ) {
+		if ( node !== null && node.isRed() === false ) {
 			node.flipColor();
 		}
 	}
 	#turnBlack(node){
-		if ( node != null && node.isRed() ) {
+		if ( node !== null && node.isRed() ) {
 			node.flipColor();
 		}
 	}
@@ -343,7 +343,7 @@ class RedBlackTree extends BSTRotation {
 	}
 	#isRightChild(node){
 		const parent = this.#getParent(node);
-        const isRightChild = parent.getRight() == node;
+        const isRightChild = parent.getRight() === node;
 		return isRightChild;
 	}
 	#ensureRedProperty(newRedNode) {
@@ -371,11 +371,11 @@ class RedBlackTree extends BSTRotation {
 		this.#turnBlack(this.root);
 	}
 	insert(data){
-		if ( data == null ) {
+		if ( data === null ) {
 			throw "Data can't be null.";
 		}
 		const newNode = new RBTNode(data);
-		if ( this.root == null ) {
+		if ( this.root === null ) {
 			this.root = newNode;
 		} else {
 			this.insertHelper(newNode, this.root);
