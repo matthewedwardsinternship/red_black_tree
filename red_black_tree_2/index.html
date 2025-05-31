@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Red Black Tree Demonstration</title>
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/rbt.js"></script>
+	<script src="js/draw_tree.js"></script>
+	<script src="js/index.js"></script>
+</head>
+<body>
+	<div id="site-content">
+		<div id="control-head">
+			<form id="demonstration-controls">
+				<div>
+					<span>Enter a value: </span>
+					<input name="input" type="text" autocomplete="off" placeholder="Example: 30 or A">
+					<button name="add">Add</button>
+					<button name="clear">Clear</button>
+					<button name="download">Download (.png)</button>
+				</div>
+				<div id="range-wrapper">
+					<span>Zoom: </span>
+					<input name="zoom" type="range" min="0" max="10000" step="1" value="1000">
+				</div>
+			</form>
+		</div>
+		<div id="main-content-container">
+			<div id="main-content-scroll-wrapper">
+				<div id="main-content-scale">
+					<div id="main-content"></div>
+				</div>
+			</div>
+		</div>
+		<a id="created-by" href="https://github.com/matthewedwardsinternship/red_black_tree">Created by Matthew Edwards</a>
+	</div>
+</body>
+</html>

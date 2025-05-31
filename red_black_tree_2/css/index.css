@@ -1,0 +1,75 @@
+body, html {
+	color: rgb(200, 200, 200);
+	font-family: helvetica, arial;
+	font-weight: 200;
+	font-size: 2vmin;
+	/*disable swipe to go back on touchscreens*/
+	touch-action: none;
+	/*disable swipe to go back on trackpads*/
+	overscroll-behavior-x: none;
+}
+* {
+	font: inherit;
+	font-size: inherit;
+}
+#site-content {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100vh;
+	background-color: #000;
+	flex-direction: column;
+	display: flex;
+}
+#control-head {
+	height: 10vmin;
+	border-bottom: solid #efefef 1px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#range-wrapper {
+	display: flex;
+}
+#range-wrapper input {
+	flex: 1;
+}
+#main-content-container {
+	flex: 1;
+	position: relative;
+}
+#main-content-scroll-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow-x: scroll;
+	overflow-y: scroll;
+}
+#main-content-scale {
+	transform-origin: 0 0;
+}
+#main-content {
+	box-sizing: border-box;
+}
+#main-content canvas {
+	margin: auto;
+	display: block;
+	width: 60vw;
+}
+#created-by {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: 0.5em;
+	font-size: 0.5em;
+	transition: font-size 0.25s;
+	cursor: pointer;
+	color: inherit;
+	text-decoration: none;
+}
+#created-by:hover {
+	font-size: 1em;
+}
