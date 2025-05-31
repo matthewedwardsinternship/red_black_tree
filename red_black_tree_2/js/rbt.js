@@ -48,8 +48,8 @@ class BSTNode {
 		return this.getUp() !== null && this.getUp().getRight() === this;
 	}
 	toString(){
-        return this.data.toString();
-    }
+		return this.data.toString();
+	}
 	//my UI code for displaying a red black tree relies on the level order so this will be good to refrence
 	toLevelOrderString(){
 		const nodeList = [];
@@ -87,8 +87,8 @@ class RBTNode extends BSTNode {
 		this.#isRed = !this.#isRed;
 	}
 	toString(){
-        return this.data.toString() + ( this.isRed() ? "(r)" : "(b)" );
-    }
+		return this.data.toString() + ( this.isRed() ? "(r)" : "(b)" );
+	}
 };
 class BinarySearchTree {
 	constructor(){
@@ -219,10 +219,10 @@ class BSTRotation extends BinarySearchTree {
 		super();
 	}
 	rotate(child, parent){
-    	if ( child === null || parent === null ) {
+		if ( child === null || parent === null ) {
 			throw "Parent and child arguments can't be null.";
-    	}
-    	if ( parent.getLeft() === child ) {
+		}
+		if ( parent.getLeft() === child ) {
 			//right rotate
 			const b = child.getRight();
 			parent.setLeft(b);
@@ -241,7 +241,7 @@ class BSTRotation extends BinarySearchTree {
 				}
 				child.setUp(parentParent);
 			}
-    	} else if ( parent.getRight() === child ) {
+		} else if ( parent.getRight() === child ) {
 			//left rotate
 			const b = child.getLeft();
 			parent.setRight(b);
@@ -260,11 +260,11 @@ class BSTRotation extends BinarySearchTree {
 				}
 				child.setUp(parentParent);
 			}
-    	} else {
+		} else {
 			throw "The child node must be a child of the parent node.";
-    	}
-    	parent.setUp(child);
-    }
+		}
+		parent.setUp(child);
+	}
 };
 class RedBlackTree extends BSTRotation {
 	constructor(){
@@ -343,7 +343,7 @@ class RedBlackTree extends BSTRotation {
 	}
 	#isRightChild(node){
 		const parent = this.#getParent(node);
-        const isRightChild = parent.getRight() === node;
+		const isRightChild = parent.getRight() === node;
 		return isRightChild;
 	}
 	#ensureRedProperty(newRedNode) {
