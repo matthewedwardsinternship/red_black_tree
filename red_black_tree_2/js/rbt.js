@@ -220,48 +220,48 @@ class BSTRotation extends BinarySearchTree {
 	}
 	rotate(child, parent){
     	if ( child === null || parent === null ) {
-    		throw "Parent and child arguments can't be null.";
+			throw "Parent and child arguments can't be null.";
     	}
     	if ( parent.getLeft() === child ) {
-    		//right rotate
-    		const b = child.getRight();
-    		parent.setLeft(b);
-    		child.setRight(parent);
-    		if ( this.root === parent ) {
-    			//if the root is the parent, then change the root to the child
-    			this.root = child;
-    			child.setUp(null);
-    		} else {
-    			//get the parent of the parent in order to swap the two nodes
-    			const parentParent = parent.getUp();
-    			if ( parentParent.getLeft() === parent ) {
-    				parentParent.setLeft(child);
-    			} else {
-    				parentParent.setRight(child);
-    			}
-				child.setUp(parentParent);
-    		}
-    	} else if ( parent.getRight() === child ) {
-    		//left rotate
-    		const b = child.getLeft();
-    		parent.setRight(b);
-    		child.setLeft(parent);
-    		if ( this.root === parent ) {
-    			//if the root is the parent, then change the root to the child
-    			this.root = child;
-    			child.setUp(null);
-    		} else {
-    			//get the parent of the parent in order to swap the two nodes
-    			const parentParent = parent.getUp();
+			//right rotate
+			const b = child.getRight();
+			parent.setLeft(b);
+			child.setRight(parent);
+			if ( this.root === parent ) {
+				//if the root is the parent, then change the root to the child
+				this.root = child;
+				child.setUp(null);
+			} else {
+				//get the parent of the parent in order to swap the two nodes
+				const parentParent = parent.getUp();
 				if ( parentParent.getLeft() === parent ) {
-    				parentParent.setLeft(child);
-    			} else {
-    				parentParent.setRight(child);
-    			}
+					parentParent.setLeft(child);
+				} else {
+					parentParent.setRight(child);
+				}
 				child.setUp(parentParent);
-    		}
+			}
+    	} else if ( parent.getRight() === child ) {
+			//left rotate
+			const b = child.getLeft();
+			parent.setRight(b);
+			child.setLeft(parent);
+			if ( this.root === parent ) {
+				//if the root is the parent, then change the root to the child
+				this.root = child;
+				child.setUp(null);
+			} else {
+				//get the parent of the parent in order to swap the two nodes
+				const parentParent = parent.getUp();
+				if ( parentParent.getLeft() === parent ) {
+					parentParent.setLeft(child);
+				} else {
+					parentParent.setRight(child);
+				}
+				child.setUp(parentParent);
+			}
     	} else {
-    		throw "The child node must be a child of the parent node.";
+			throw "The child node must be a child of the parent node.";
     	}
     	parent.setUp(child);
     }
