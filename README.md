@@ -7,7 +7,7 @@ This is an interactive demonstration I have created in order to showcase red bla
 1. All nodes are either red or black.
 2. The root node is always black.
 3. The children of a red node are always black.
-4. Every node with at least one null child must have the same number of black ancestor nodes. 
+4. Every node with at least one null child must have the same number of black ancestor nodes (including itself). 
 
 Link to demonstration:
 
