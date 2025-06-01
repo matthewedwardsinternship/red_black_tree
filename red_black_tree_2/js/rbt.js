@@ -50,30 +50,6 @@ class BSTNode {
 	toString(){
 		return this.data.toString();
 	}
-	//my UI code for displaying a red black tree relies on the level order so this will be good to refrence
-	toLevelOrderString(){
-		const nodeList = [];
-		const peek = () => nodeList[0];
-		nodeList.push(this);
-		let str = "";
-		str += "[ ";
-		while ( nodeList.length !== 0 ) {
-			if ( peek().getLeft() !== null ) {
-				nodeList.push(peek().getLeft());
-			}
-			if ( peek().getRight() !== null ) {
-				nodeList.push(peek().getRight());
-			}
-			//either this is pop or shift (try it both ways I guess)
-			str += nodeList.shift().toString();
-			if ( nodeList.length === 0 ) {
-				str += " ]";
-			} else {
-				str += ", ";
-			}
-		}
-		return str;
-	}
 };
 class RBTNode extends BSTNode {
 	#isRed = true;
