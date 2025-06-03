@@ -69,7 +69,6 @@ window.addEventListener("DOMContentLoaded", () => {
 						nodeList.push([null, peek()[1] + 1]);
 					}
 				}
-				//either this is pop or shift (try it both ways I guess)
 				array.push(nodeList.shift());
 			}
 		}
